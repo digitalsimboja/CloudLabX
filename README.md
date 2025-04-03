@@ -5,21 +5,21 @@ CloudLabX is a cloud architecting and hands-on lab platform that allows teams to
 ## Features  
 
 ✅ Core Functionalities
-- 👨‍💻 Cloud Architecture Builder: Drag-and-drop UI for designing AWS-based infrastructure.
+👨‍💻 Cloud Architecture Builder: Drag-and-drop UI for designing AWS-based infrastructure.
 
-- 🚀 Auto-Generated IaC (Terraform/CDK): Converts designs into deployable code.
+🚀 Auto-Generated IaC (Terraform/CDK): Converts designs into deployable code.
 
-- 🤖 AI-Driven Segmentation: Auto-segments cloud data, logs, and costs using ML.
+🤖 AI-Driven Segmentation: Auto-segments cloud data, logs, and costs using ML.
 
-- 📊 AI Insights & Optimization: AI suggests cost optimizations and security improvements.
+📊 AI Insights & Optimization: AI suggests cost optimizations and security improvements.
 
-- 🔎 Monitoring & Anomaly Detection: AI tracks deployments, detects security issues, and predicts cost trends.
+🔎 Monitoring & Anomaly Detection: AI tracks deployments, detects security issues, and predicts cost trends.
 
-- 👥 Team Collaboration & Multi-User Editing: Real-time updates for cloud teams.
+👥 Team Collaboration & Multi-User Editing: Real-time updates for cloud teams.
 
-- ⚙️ Integrations with AWS, GitHub, and CI/CD Pipelines: Seamless workflow automation.
+⚙️ Integrations with AWS, GitHub, and CI/CD Pipelines: Seamless workflow automation.
 
-- 🔒 Secure Access Control: IAM-based role management for cloud deployments.  
+🔒 Secure Access Control: IAM-based role management for cloud deployments.  
 
 ## Getting Started
 
