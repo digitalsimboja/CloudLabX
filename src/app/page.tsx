@@ -11,7 +11,7 @@ import Footer from "../../components/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar isLoggedIn={false} />
       <HeroSection />
       <HowItWorks />
       <Pricing />
