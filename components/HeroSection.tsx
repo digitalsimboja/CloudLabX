@@ -10,8 +10,9 @@ export default function HeroSection() {
           Intelligent Cloud Architecting & AI-Powered Auto-Segmentation
         </h1>
         <p className="text-light-200 text-lg mt-4">
-          {/* CloudLabX provides an interactive cloud lab for designing, testing, and optimizing architectures with real-world use cases. */}
-          Our AI-driven system automatically segments user data using advanced machine learning models tailored for cloud workloads.
+          CloudLabX is your launchpad for architecting OpenStack and AWS workloads.
+          From intelligent provisioning to AI-powered data auto-segmentation, we
+          make workload deployment to the cloud seamless, scalable, and smart.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
           <Link href="/get-started">

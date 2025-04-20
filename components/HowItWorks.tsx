@@ -9,7 +9,7 @@ export default function HowItWorks() {
           How CloudLabX Works
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-          Our AI-powered system automates cloud architecture, ensuring efficient segmentation, optimization, and seamless scaling.
+        CloudLabX simplifies complex infrastructure provisioning across both OpenStack and AWS. From AI-powered insights to seamless deployment and ongoing optimization, we help you launch, scale, and manage cloud-native workloads effortlessly.
         </p>
 
         {/* Steps Grid */}
@@ -21,7 +21,7 @@ export default function HowItWorks() {
               AI-Powered Insights
             </h3>
             <p className="text-sm text-gray-300">
-              Our AI analyzes your workloads, detecting optimization opportunities and recommending improvements.
+            Our intelligent engine analyzes both AWS and OpenStack environments to detect bottlenecks, recommend cost savings, and surface architecture improvements.
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export default function HowItWorks() {
               Intelligent Segmentation
             </h3>
             <p className="text-sm text-gray-300">
-              Automatically groups and optimizes workloads based on AI-driven insights, improving efficiency.
+            Automatically segments workloads across cloud platforms using ML-driven logic tailored for hybrid infrastructure.
             </p>
           </div>
 
@@ -40,10 +40,10 @@ export default function HowItWorks() {
           <div className="bg-dark-800 text-white rounded-lg shadow-lg p-6 flex flex-col items-center translate-y-5 animate-fade-in delay-400">
             <UploadCloud size={48} className="text-[#FF6F61] mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-              Cloud Deployment
+            Unified Cloud Deployment
             </h3>
             <p className="text-sm text-gray-300">
-              Deploy optimized cloud architectures with one click, reducing manual setup time.
+            Provision infrastructure on OpenStack or AWS in one click — with pre-validated templates and zero guesswork.
             </p>
           </div>
 
@@ -54,7 +54,7 @@ export default function HowItWorks() {
               Continuous Optimization
             </h3>
             <p className="text-sm text-gray-300">
-              AI continuously monitors and optimizes your cloud environment for maximum efficiency.
+            Our system continuously adapts to workload patterns, ensuring top-tier performance and cost efficiency across both cloud platforms.
             </p>
           </div>
         </div>

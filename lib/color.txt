@@ -1,0 +1,8 @@
+Color Role	    Tailwind Class	    Hex Code	    Usage
+Primary Blue	blue.DEFAULT	    #1A73E8	        Headers, graphs, accent bars
+Dark Blue	    blue.dark	        #0F4CBD	        Chart legends, axis labels
+Accent Gold	    accent.DEFAULT	    #FFD700	        Key segment highlights
+Dark Background	bg-dark-900	        #121212	        Main background
+Card Background	bg-dark-800	        #1E1E1E	        Chart containers
+Border Gray	    border-gray-700	    #374151	        Divider lines and shadows
+Text Gray	    text-gray-400	    #9CA3AF	        Descriptive and label text

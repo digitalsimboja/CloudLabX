@@ -8,7 +8,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="bg-red-dark text-white shadow-md fixed w-full z-50">
+    <nav className="text-white shadow-md fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
@@ -123,7 +123,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           <Link href="/pricing" className="block hover:text-accent">
             Pricing
           </Link>
-          <Link href="/contact" className="block hover:text-accent">
+          <Link href="#contact-us" className="block hover:text-accent">
             Contact
           </Link>
 

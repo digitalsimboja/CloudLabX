@@ -11,7 +11,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="bg-gradient-to-r from-[#0F4CBD]-500 to-purple-100 text-white py-20 px-6 md:px-16 text-center">
+    <section id="contact-us" className="bg-gradient-to-r from-[#0F4CBD]-500 to-purple-100 text-white py-20 px-6 md:px-16 text-center " >
       <h2 className="text-3xl sm:text-4xl font-bold mb-6">Get in Touch</h2>
       <p className="text-lg mb-8">
         Have questions? Leave your email and we’ll get back to you!
