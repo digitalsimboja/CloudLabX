@@ -9,7 +9,7 @@ export default function HowItWorks() {
           How CloudLabX Works
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-        CloudLabX simplifies complex infrastructure provisioning across both OpenStack and AWS. From AI-powered insights to seamless deployment and ongoing optimization, we help you launch, scale, and manage cloud-native workloads effortlessly.
+        CloudLabX simplifies complex infrastructure provisioning across both OpenStack and AWS. From AI-powered cloud cost insights to seamless deployment and ongoing optimization, we help you launch, scale, and manage cloud-native workloads effortlessly.
         </p>
 
         {/* Steps Grid */}
@@ -18,7 +18,7 @@ export default function HowItWorks() {
           <div className="bg-dark-800 text-white rounded-lg shadow-lg p-6 flex flex-col items-center translate-y-5 animate-fade-in delay-300">
             <Lightbulb size={48} className="text-[#00B4D8] mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-              AI-Powered Insights
+              AI-Powered Cost Insights
             </h3>
             <p className="text-sm text-gray-300">
             Our intelligent engine analyzes both AWS and OpenStack environments to detect bottlenecks, recommend cost savings, and surface architecture improvements.
@@ -32,7 +32,7 @@ export default function HowItWorks() {
               Intelligent Segmentation
             </h3>
             <p className="text-sm text-gray-300">
-            Automatically segments workloads across cloud platforms using ML-driven logic tailored for hybrid infrastructure.
+            Automatically segments workloads and user data across cloud platforms using ML models tailored for hybrid infrastructure.
             </p>
           </div>
 
