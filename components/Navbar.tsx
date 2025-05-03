@@ -30,34 +30,33 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
 
             {/* Labs Dropdown */}
             <div className="relative group">
-              <span className="flex items-center space-x-1 cursor-pointer hover:text-accent">
+              <div className=" flex items-center space-x-1 cursor-pointer group-hover:text-accent">
                 <span>Labs</span>
                 <ChevronDown size={16} />
-              </span>
-              <div className="absolute hidden group-hover:block bg-[#1e293b] mt-2 rounded-md p-2 shadow-lg min-w-max">
-              <Link
-                  href="/solutions/auto-segmentation"
+              </div>
+              <div className="absolute hidden group-hover:block hover:block bg-[#1e293b] mt-2 rounded-md p-2 shadow-lg min-w-max">
+                <Link
+                  href="/solutions/aws-labs"
                   className="block px-4 py-2 hover:bg-[#334155] rounded"
                 >
                   AWS Labs
                 </Link>
                 <Link
-                  href="/solutions/optimization"
+                  href="/solutions/openstack-labs"
                   className="block px-4 py-2 hover:bg-[#334155] rounded"
                 >
                   OpenStack Labs
                 </Link>
               </div>
             </div>
-
             {/* Solutions Dropdown */}
             <div className="relative group">
-              <span className="flex items-center space-x-1 cursor-pointer hover:text-accent">
+              <div className="flex items-center space-x-1 cursor-pointer hover:text-accent">
                 <span>Solutions</span>
                 <ChevronDown size={16} />
-              </span>
+              </div>
               <div className="absolute hidden group-hover:block bg-[#1e293b] mt-2 rounded-md p-2 shadow-lg min-w-max">
-              <Link
+                <Link
                   href="/solutions/auto-segmentation"
                   className="block px-4 py-2 hover:bg-[#334155] rounded"
                 >
@@ -120,7 +119,9 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
             <button
               className="flex items-center space-x-1 text-left w-full hover:text-accent"
               onClick={() =>
-                setMobileDropdown(mobileDropdown === "solutions" ? "" : "solutions")
+                setMobileDropdown(
+                  mobileDropdown === "solutions" ? "" : "solutions"
+                )
               }
             >
               <span>Solutions</span>
@@ -187,10 +188,8 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           </Link>
 
           {!isLoggedIn && (
-            <Link href="/login">
-              <button className="bg-secondary text-white px-4 py-2 rounded-md w-full hover:bg-dark-100 transition">
-                Login
-              </button>
+            <Link href="/contact" className="block hover:text-accent">
+              Login
             </Link>
           )}
         </div>

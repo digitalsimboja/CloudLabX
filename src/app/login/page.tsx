@@ -15,7 +15,13 @@ export default function Login() {
       // Handle OAuth login logic here
     } else {
       console.log("Logging in with email/password", { email, password });
-      // Handle traditional login logic here
+      fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
     }
   };
 

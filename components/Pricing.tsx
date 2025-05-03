@@ -2,15 +2,16 @@ import React from "react";
 
 const pricingPlans = [
   {
-    title: "Basic",
-    price: "$19/month",
+    title: "Starter",
+    price: "$29/month",
     features: [
-      "Trial lasts for 14 days",
-      "Access to cost-effective free trial",
-      "1 GB Cloud Storage",
-      "Up to 5 Workloads",
-      "Basic AI Optimization",
+      "14-day free trial",
+      "Hybrid Cloud Dashboard Access",
+      "Basic AI Recommendations",
+      "5 Workload Templates",
       "Email Support",
+      "On-Prem & Cloud Network Automation",
+      "up to 5 nodes"
     ],
     buttonText: "Start Free Trial",
     buttonLink: "#",
@@ -19,15 +20,16 @@ const pricingPlans = [
     borderColor: "border-[#00B4D8]",
   },
   {
-    title: "Pro",
-    price: "$49/month",
+    title: "Professional",
+    price: "$79/month",
     features: [
-      "Everything in Basic",
-      "10 GB Cloud Storage",
-      "Up to 20 Workloads",
-      "Advanced AI Optimization",
-      "Priority Email Support",
-      "Custom Alerts & Monitoring",
+      "Everything in Starter",
+      "Advanced Network Automation",
+      "up to 20 nodes",
+      "Cross-Cloud Optimization (AWS + OpenStack)",
+      "10 Hybrid Workload Templates",
+      "Priority Email & Chat Support",
+      "Custom Monitoring & Alerts",
     ],
     buttonText: "Get Started",
     buttonLink: "#",
@@ -37,14 +39,15 @@ const pricingPlans = [
   },
   {
     title: "Enterprise",
-    price: "$149/month",
+    price: "$249/month",
     features: [
-      "Everything in Pro",
-      "100 GB Cloud Storage",
-      "Unlimited Workloads",
-      "Full AI Optimization Suite",
-      "24/7 Support",
-      "Dedicated Account Manager",
+      "Everything in Professional",
+      "Unlimited Nodes & Workloads",
+      "Full AI-Powered Optimization Suite",
+      "Dedicated Hybrid Cloud Engineer",
+      "24/7 Enterprise Support",
+      "Custom Integrations & API Access",
+      "Advanced Security & Compliance Features",
     ],
     buttonText: "Contact Us",
     buttonLink: "#",
@@ -60,11 +63,11 @@ export default function Pricing() {
       <div className="container mx-auto text-center px-6">
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-100 mb-10">
-          Choose Your Plan
+          Choose Your CloudLabX Plan
         </h2>
         <p className="text-lg sm:text-xl text-dark-200 max-w-3xl mx-auto mb-12">
-          Whether you're just getting started or need a robust cloud solution,
-          we have a plan for you.
+          Whether you're a small team automating hybrid workloads or an enterprise
+          optimizing cross-cloud networks, CloudLabX has a plan tailored for your needs.
         </p>
 
         {/* Pricing Grid */}

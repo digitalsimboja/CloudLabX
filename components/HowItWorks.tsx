@@ -5,11 +5,11 @@ export default function HowItWorks() {
     <section className="bg-dark-900 py-16 lg:py-32">
       <div className="container mx-auto px-6 text-center">
         {/* Section Heading */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
           How CloudLabX Works
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-        CloudLabX simplifies complex infrastructure provisioning across both OpenStack and AWS. From AI-powered cloud cost insights to seamless deployment and ongoing optimization, we help you launch, scale, and manage cloud-native workloads effortlessly.
+          Streamline hybrid cloud orchestration with AI-powered automation.
         </p>
 
         {/* Steps Grid */}
@@ -18,10 +18,12 @@ export default function HowItWorks() {
           <div className="bg-dark-800 text-white rounded-lg shadow-lg p-6 flex flex-col items-center translate-y-5 animate-fade-in delay-300">
             <Lightbulb size={48} className="text-[#00B4D8] mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-              AI-Powered Cost Insights
+              AI-Driven Architecture Insights
             </h3>
             <p className="text-sm text-gray-300">
-            Our intelligent engine analyzes both AWS and OpenStack environments to detect bottlenecks, recommend cost savings, and surface architecture improvements.
+              Analyze hybrid environments with intelligent recommendations for
+              network design, cost optimization, and system performance across
+              on-prem and cloud platforms.
             </p>
           </div>
 
@@ -29,10 +31,12 @@ export default function HowItWorks() {
           <div className="bg-dark-800 text-white rounded-lg shadow-lg p-6 flex flex-col items-center translate-y-5 animate-fade-in delay-200">
             <Layers size={48} className="text-[#F4A261] mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-              Intelligent Segmentation
+              Intelligent Workload Segmentation
             </h3>
             <p className="text-sm text-gray-300">
-            Automatically segments workloads and user data across cloud platforms using ML models tailored for hybrid infrastructure.
+              Automatically segment and route workloads across on-prem,
+              OpenStack, and AWS using ML-powered automation for hybrid cloud
+              optimization.{" "}
             </p>
           </div>
 
@@ -40,10 +44,12 @@ export default function HowItWorks() {
           <div className="bg-dark-800 text-white rounded-lg shadow-lg p-6 flex flex-col items-center translate-y-5 animate-fade-in delay-400">
             <UploadCloud size={48} className="text-[#FF6F61] mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-            Unified Cloud Deployment
+              Unified Infrastructure Deployment
             </h3>
             <p className="text-sm text-gray-300">
-            Provision infrastructure on OpenStack or AWS in one click — with pre-validated templates and zero guesswork.
+              Automate the provisioning of cloud and on-prem networks using
+              pre-built templates, ensuring consistent, scalable deployments
+              across all environments.{" "}
             </p>
           </div>
 
@@ -54,7 +60,9 @@ export default function HowItWorks() {
               Continuous Optimization
             </h3>
             <p className="text-sm text-gray-300">
-            Our system continuously adapts to workload patterns, ensuring top-tier performance and cost efficiency across both cloud platforms.
+              Continuously monitor and adapt network configurations, optimizing
+              performance, security, and cost across your hybrid and multi-cloud
+              environments.{" "}
             </p>
           </div>
         </div>

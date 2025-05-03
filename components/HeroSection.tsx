@@ -3,16 +3,16 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className=" text-light-100 py-16 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between">
+    <section className="text-light-100 py-16 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between">
       {/* Left Content */}
       <div className="max-w-2xl text-center md:text-left">
         <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight">
-          Intelligent Cloud Architecting & AI-Powered Auto-Segmentation
+          Intelligent Cloud Architecting & Network Automation
         </h1>
         <p className="text-light-200 text-lg mt-4">
-          CloudLabX is your launchpad for architecting OpenStack and AWS workloads.
-          From intelligent provisioning to AI-powered data auto-segmentation, we
-          make workload deployment to the cloud seamless, scalable, and smart.
+          AI-powered cloud automation for AWS, OpenStack,On-Prem and Hybrid
+          Cloud — all in one platform. Deploy smarter, scale faster, manage
+          effortlessly.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
           <Link href="/get-started">
@@ -32,7 +32,7 @@ export default function HeroSection() {
       <div className="mt-10 md:mt-0 w-full md:w-1/2 flex justify-center">
         <Image
           src="/images/cloudlabx-hero.png"
-          alt="AI-Powered Cloud Architecture"
+          alt="AI-Powered Cloud Architecture Platform"
           width={500}
           height={400}
           className="w-full md:w-auto"
