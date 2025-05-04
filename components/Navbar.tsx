@@ -15,7 +15,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           <div className="flex items-center">
             <Link href="/">
               <span className="text-2xl font-bold text-accent cursor-pointer">
-                CloudLabX
+                TrixNet
               </span>
             </Link>
           </div>

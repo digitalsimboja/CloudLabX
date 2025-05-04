@@ -63,11 +63,11 @@ export default function Pricing() {
       <div className="container mx-auto text-center px-6">
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-100 mb-10">
-          Choose Your CloudLabX Plan
+          Choose Your Plan
         </h2>
         <p className="text-lg sm:text-xl text-dark-200 max-w-3xl mx-auto mb-12">
           Whether you're a small team automating hybrid workloads or an enterprise
-          optimizing cross-cloud networks, CloudLabX has a plan tailored for your needs.
+          optimizing cross-cloud networks, TrixNet has a plan tailored for your needs.
         </p>
 
         {/* Pricing Grid */}

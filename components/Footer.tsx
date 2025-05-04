@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Company Info */}
         <div>
-          <h3 className="text-xl font-bold text-white">CloudLabX</h3>
+          <h3 className="text-xl font-bold text-white">TrixNet</h3>
           <p className="mt-3 text-sm">
             Revolutionizing cloud optimization with AI-powered automation.
           </p>
@@ -22,7 +22,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail size={18} className="text-indigo-400" />
-              contact@cloudlabx.io
+              contact@TrixNet.io
             </li>
             <li className="flex items-center gap-2">
               <Phone size={18} className="text-indigo-400" />
@@ -77,7 +77,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm">
-        &copy; {new Date().getFullYear()} CloudLabX. All rights reserved.
+        &copy; {new Date().getFullYear()} TrixNet. All rights reserved.
       </div>
     </footer>
   );

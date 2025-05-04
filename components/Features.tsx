@@ -5,7 +5,7 @@ export default function Features() {
     <section className="py-16 lg:py-32 bg-light-100">
       <div className="mx-auto px-4 text-center">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-dark-100">
-          Key Features of CloudLabX
+          Key Features of TrixNet
         </h2>
         <p className="text-lg sm:text-xl lg:text-2xl mb-12 text-dark-200 max-w-3xl mx-auto">
           Empowering teams with AI-driven hybrid cloud orchestration and
@@ -43,7 +43,7 @@ export default function Features() {
           <div className="rounded-lg shadow-lg p-6 flex flex-col items-center">
             <Cloud size={48} className="text-[#FF6F61] mb-4" />
             <h3 className="text-xl font-semibold text-dark-100 mb-2">
-              Unified Monitoring & Alerts
+              Monitoring & Alerts
             </h3>
             <p className="text-sm text-dark-200">
               Gain real-time visibility across all cloud and on-prem assets with

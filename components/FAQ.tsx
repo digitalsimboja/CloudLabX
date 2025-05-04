@@ -4,9 +4,9 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is CloudLabX?",
+    question: "What is TrixNet?",
     answer:
-      "CloudLabX is an AI-driven cloud automation platform that optimizes cloud workloads, ensuring efficiency and cost savings.",
+      "TrixNet is an AI-driven cloud automation platform that optimizes cloud workloads, ensuring efficiency and cost savings.",
   },
   {
     question: "How does AI improve cloud optimization?",
@@ -21,32 +21,32 @@ const faqs = [
   {
     question: "Is there a free trial available?",
     answer:
-      "Yes! We offer a 14-day free trial so you can experience CloudLabX before committing to a plan.",
+      "Yes! We offer a 14-day free trial so you can experience TrixNet before committing to a plan.",
   },
   {
-    question: "How secure is CloudLabX?",
+    question: "How secure is TrixNet?",
     answer:
       "We implement enterprise-grade security measures, including encryption and compliance with industry standards.",
   },
   {
-    question: "Can I use CloudLabX for multi-cloud management?",
+    question: "Can I use TrixNet for multi-cloud management?",
     answer:
       "Yes, our platform enables seamless multi-cloud management and optimization across providers.",
   },
   {
-    question: "Do I need technical expertise to use CloudLabX?",
+    question: "Do I need technical expertise to use TrixNet?",
     answer:
       "No, our intuitive UI and AI-driven recommendations make it easy for both technical and non-technical users.",
   },
   {
-    question: "How does CloudLabX reduce costs?",
+    question: "How does TrixNet reduce costs?",
     answer:
       "We identify unused resources, right-size instances, and optimize workloads to minimize unnecessary expenses.",
   },
   {
-    question: "Can I integrate CloudLabX with my existing tools?",
+    question: "Can I integrate TrixNet with my existing tools?",
     answer:
-      "Absolutely! CloudLabX offers integrations with major DevOps and cloud management tools.",
+      "Absolutely! TrixNet offers integrations with major DevOps and cloud management tools.",
   },
   {
     question: "What support options are available?",
@@ -54,12 +54,12 @@ const faqs = [
       "We provide 24/7 customer support via chat, email, and phone, plus extensive documentation. Our AI-Agents are also available at odd hours to respond to your queries.",
   },
   {
-    question: "Is CloudLabX suitable for startups and enterprises?",
+    question: "Is TrixNet suitable for startups and enterprises?",
     answer:
-      "Yes, CloudLabX scales to fit the needs of startups, mid-sized companies, and large enterprises alike.",
+      "Yes, TrixNet scales to fit the needs of startups, mid-sized companies, and large enterprises alike.",
   },
   {
-    question: "How do I get started with CloudLabX?",
+    question: "How do I get started with TrixNet?",
     answer:
       "Simply sign up, connect your cloud account, and let our AI handle the rest!",
   },

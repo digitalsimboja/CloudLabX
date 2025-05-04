@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CloudLabX - Cloud Architecture Lab",
+  title: "TrixNet - Intelligent Cloud Architecting | Network Automation",
   description: "An interactive platform for designing, testing, and deploying cloud architectures with real-world scenarios.",
 };
 

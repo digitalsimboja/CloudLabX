@@ -1,6 +1,6 @@
-# CloudLabX 🚀  
+# TrixNet 🚀  
 
-CloudLabX is a cloud architecting and hands-on lab platform that allows teams to design, visualize, deploy, and optimize cloud-based solutions using an interactive UI. The platform integrates AI-powered auto-segmentation, infrastructure automation (Terraform/CDK), and predictive analytics to enhance cloud deployments. 
+TrixNet is a cloud architecting and hands-on lab platform that allows teams to design, visualize, deploy, and optimize cloud-based solutions using an interactive UI. The platform integrates AI-powered auto-segmentation, infrastructure automation (Terraform/CDK), and predictive analytics to enhance cloud deployments. 
 
 ## Features  
 

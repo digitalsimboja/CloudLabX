@@ -31,7 +31,7 @@ export default function Login() {
       <section className="flex items-center justify-center min-h-screen bg-dark-900 px-4">
         <div className="w-full max-w-sm sm:max-w-md bg-dark-800 text-gray-300 rounded-lg p-8 shadow-lg">
           <h2 className="text-2xl font-bold text-center text-white mb-6">
-            Welcome Back to CloudLabX
+            Welcome Back to TrixNet
           </h2>
 
           {/* Email & Password Login */}
