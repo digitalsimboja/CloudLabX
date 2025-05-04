@@ -34,7 +34,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <span>Labs</span>
                 <ChevronDown size={16} />
               </div>
-              <div className="absolute hidden group-hover:block hover:block bg-[#1e293b] mt-2 rounded-md p-2 shadow-lg min-w-max">
+              <div className="absolute hidden group-hover:block hover:block bg-[#1e293b] rounded-md p-2 shadow-lg min-w-max">
                 <Link
                   href="/solutions/aws-labs"
                   className="block px-4 py-2 hover:bg-[#334155] rounded"
@@ -55,24 +55,42 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <span>Solutions</span>
                 <ChevronDown size={16} />
               </div>
-              <div className="absolute hidden group-hover:block bg-[#1e293b] mt-2 rounded-md p-2 shadow-lg min-w-max">
+              <div className="absolute hidden group-hover:block bg-[#1e293b] rounded-md p-2 pl-4 shadow-lg min-w-max">
                 <Link
                   href="/solutions/auto-segmentation"
-                  className="block px-4 py-2 hover:bg-[#334155] rounded"
+                  className="block hover:text-accent py-2"
                 >
-                  Auto-Segmentation
+                  IoT Edge
+                </Link>
+                <Link
+                  href="/solutions/auto-segmentation"
+                  className="block hover:text-accent py-2"
+                >
+                  Data Segmentation
                 </Link>
                 <Link
                   href="/solutions/optimization"
-                  className="block px-4 py-2 hover:bg-[#334155] rounded"
+                  className="block hover:text-accent py-2"
                 >
-                  AI Optimization
+                  Workflow Orchestration
                 </Link>
                 <Link
                   href="/solutions/monitoring"
-                  className="block px-4 py-2 hover:bg-[#334155] rounded"
+                  className="block hover:text-accent py-2"
                 >
-                  Monitoring & Alerts
+                  Telco Cloud
+                </Link>
+                <Link
+                  href="/solutions/monitoring"
+                  className="block hover:text-accent py-2"
+                >
+                  Infrastructure Orchestration
+                </Link>
+                <Link
+                  href="/solutions/monitoring"
+                  className="block hover:text-accent py-2"
+                >
+                  Trainings
                 </Link>
               </div>
             </div>
@@ -131,21 +149,39 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
               <div className="pl-4 space-y-2">
                 <Link
                   href="/solutions/auto-segmentation"
-                  className="block hover:text-accent"
+                  className="block hover:text-accent py-2"
                 >
-                  Auto-Segmentation
+                  IoT Edge
+                </Link>
+                <Link
+                  href="/solutions/auto-segmentation"
+                  className="block hover:text-accent py-2"
+                >
+                  Data Segmentation
                 </Link>
                 <Link
                   href="/solutions/optimization"
-                  className="block hover:text-accent"
+                  className="block hover:text-accent py-2"
                 >
-                  AI Optimization
+                   Workflow Orchestration
                 </Link>
                 <Link
                   href="/solutions/monitoring"
-                  className="block hover:text-accent"
+                  className="block hover:text-accent py-2"
                 >
-                  Monitoring & Alerts
+                  Telco Cloud
+                </Link>
+                <Link
+                  href="/solutions/monitoring"
+                  className="block hover:text-accent py-2"
+                >
+                  Infrastructure Orchestration
+                </Link>
+                <Link
+                  href="/solutions/monitoring"
+                  className="block hover:text-accent py-2"
+                >
+                  Trainings
                 </Link>
               </div>
             )}
