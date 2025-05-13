@@ -11,38 +11,57 @@ const labs = [
     title: "AI-Powered Customer Segmentation",
     description: "Use AWS Lambda, S3, and SageMaker to build real-time customer segmentation.",
     image: "/assets/labs/customer-segmentation.png",
-    link: "/labs/customer-segmentation",
+    link: "/labs/aws/customer-segmentation",
   },
   {
     title: "Serverless Video Processing",
     description: "Build a video upload and processing pipeline with Lambda, Step Functions, and Elastic Transcoder.",
     image: "/assets/labs/video-processing.jpg",
-    link: "/labs/video-processing",
+    link: "/labs/aws/video-processing",
   },
   {
     title: "Secure File Upload with S3 & Cognito",
     description: "Enable authenticated users to upload files securely using AWS Cognito and S3 pre-signed URLs.",
     image: "/assets/labs/secure-file-upload.jpg",
-    link: "/labs/secure-file-upload",
+    link: "/labs/aws/secure-file-upload",
   },
   {
     title: "Real-Time Chat with API Gateway WebSockets",
     description: "Use WebSocket APIs, Lambda, and DynamoDB to create a scalable real-time chat app.",
     image: "/assets/labs/realtime-chat.jpg",
-    link: "/labs/realtime-chat",
+    link: "/labs/aws/realtime-chat",
   },
   {
     title: "Automated Image Moderation with Rekognition",
     description: "Analyze and moderate uploaded images using Rekognition and event-driven Lambda functions.",
     image: "/assets/labs/image-moderation.jpg",
-    link: "/labs/image-moderation",
+    link: "/labs/aws/image-moderation",
   },
   {
     title: "IoT Telemetry Dashboard with QuickSight",
     description: "Stream IoT data with AWS IoT Core and visualize metrics using Amazon QuickSight.",
     image: "/assets/labs/iot-dashboard.jpg",
-    link: "/labs/iot-dashboard",
+    link: "/labs/aws/iot-dashboard",
   },
+  {
+    title: "Event-Driven Order Processing System",
+    description: "Build a scalable e-commerce backend using Amazon SQS, Lambda, and DynamoDB to handle order events asynchronously.",
+    image: "/assets/labs/aws/order-processing.jpg",
+    link: "/labs/aws/order-processing",
+  },
+  {
+    title: "Personalized Recommendation Engine",
+    description: "Use Amazon Personalize and S3 to create and deploy a machine learning model that generates personalized product recommendations.",
+    image: "/assets/labs/aws/recommendation-engine.jpg",
+    link: "/labs/aws/recommendation-engine",
+  },
+  {
+    "title": "Credit Scoring Model",
+    "description": "Leverage AWS services like Amazon SageMaker and DynamoDB to build and deploy a machine learning model for assessing credit scores based on historical data and financial behavior.",
+    "image": "/assets/labs/aws/credit-scoring.jpg",
+    "link": "/labs/aws/credit-scoring"
+  }
+  
 ];
 
 export default function AWSLabsPage() {
