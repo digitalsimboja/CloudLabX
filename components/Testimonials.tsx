@@ -8,7 +8,7 @@ const testimonials = [
     name: "Jane Doe",
     image: "/images/jane.jpg",
     feedback:
-      "TrixNet transformed our cloud efficiency, saving us 40% in costs!",
+      "BojaLabs transformed our cloud efficiency, saving us 40% in costs!",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const testimonials = [
     name: "Emily Brown",
     image: "/images/emily.jpg",
     feedback:
-      "I love how intuitive and effective TrixNet is for scaling our business!",
+      "I love how intuitive and effective BojaLabs is for scaling our business!",
   },
   {
     id: 4,

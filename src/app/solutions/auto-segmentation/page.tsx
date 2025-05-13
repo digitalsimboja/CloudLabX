@@ -17,7 +17,7 @@ export default function AutoSegmentationPage() {
             AI-Powered Customer Auto-Segmentation
           </h1>
           <p className="text-gray-400 text-lg">
-            Discover how TrixNet intelligently segments your customer data in real-time using AI. 
+            Discover how BojaLabs intelligently segments your customer data in real-time using AI. 
             Gain insights. Drive actions. Personalize experiences.
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function AutoSegmentationPage() {
               What Auto-Segmentation Does
             </h2>
             <p>
-              TrixNet uses real-time behavioral, demographic, and transactional data 
+              BojaLabs uses real-time behavioral, demographic, and transactional data 
               to automatically segment your users into meaningful clusters. With our AI models, 
               you can identify high-value customers, churn risks, trend-setters, and more — 
               all without manual tagging or guesswork.

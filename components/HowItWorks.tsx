@@ -6,10 +6,10 @@ export default function HowItWorks() {
       <div className="container mx-auto px-6 text-center">
         {/* Section Heading */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-          How TrixNet Works
+          How BojaLabs Works
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-          Streamline hybrid cloud orchestration with AI-powered automation.
+          Streamline cloud orchestration with AI-powered automation.
         </p>
 
         {/* Steps Grid */}

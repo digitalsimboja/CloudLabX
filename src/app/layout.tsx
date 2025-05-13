@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TrixNet - Intelligent Cloud Architecting | Network Automation",
+  title: "BojaLabs - Intelligent Cloud Architecting | Network Automation",
   description: "An interactive platform for designing, testing, and deploying cloud architectures with real-world scenarios.",
 };
 

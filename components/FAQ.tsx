@@ -4,9 +4,9 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is TrixNet?",
+    question: "What is BojaLabs?",
     answer:
-      "TrixNet is an AI-driven cloud automation platform that optimizes cloud workloads, ensuring efficiency and cost savings.",
+      "BojaLabs is an AI-driven cloud automation platform that optimizes cloud workloads, ensuring efficiency and cost savings.",
   },
   {
     question: "How does AI improve cloud optimization?",
@@ -21,32 +21,32 @@ const faqs = [
   {
     question: "Is there a free trial available?",
     answer:
-      "Yes! We offer a 14-day free trial so you can experience TrixNet before committing to a plan.",
+      "Yes! We offer a 14-day free trial so you can experience BojaLabs before committing to a plan.",
   },
   {
-    question: "How secure is TrixNet?",
+    question: "How secure is BojaLabs?",
     answer:
       "We implement enterprise-grade security measures, including encryption and compliance with industry standards.",
   },
   {
-    question: "Can I use TrixNet for multi-cloud management?",
+    question: "Can I use BojaLabs for multi-cloud management?",
     answer:
       "Yes, our platform enables seamless multi-cloud management and optimization across providers.",
   },
   {
-    question: "Do I need technical expertise to use TrixNet?",
+    question: "Do I need technical expertise to use BojaLabs?",
     answer:
       "No, our intuitive UI and AI-driven recommendations make it easy for both technical and non-technical users.",
   },
   {
-    question: "How does TrixNet reduce costs?",
+    question: "How does BojaLabs reduce costs?",
     answer:
       "We identify unused resources, right-size instances, and optimize workloads to minimize unnecessary expenses.",
   },
   {
-    question: "Can I integrate TrixNet with my existing tools?",
+    question: "Can I integrate BojaLabs with my existing tools?",
     answer:
-      "Absolutely! TrixNet offers integrations with major DevOps and cloud management tools.",
+      "Absolutely! BojaLabs offers integrations with major DevOps and cloud management tools.",
   },
   {
     question: "What support options are available?",
@@ -54,12 +54,12 @@ const faqs = [
       "We provide 24/7 customer support via chat, email, and phone, plus extensive documentation. Our AI-Agents are also available at odd hours to respond to your queries.",
   },
   {
-    question: "Is TrixNet suitable for startups and enterprises?",
+    question: "Is BojaLabs suitable for startups and enterprises?",
     answer:
-      "Yes, TrixNet scales to fit the needs of startups, mid-sized companies, and large enterprises alike.",
+      "Yes, BojaLabs scales to fit the needs of startups, mid-sized companies, and large enterprises alike.",
   },
   {
-    question: "How do I get started with TrixNet?",
+    question: "How do I get started with BojaLabs?",
     answer:
       "Simply sign up, connect your cloud account, and let our AI handle the rest!",
   },

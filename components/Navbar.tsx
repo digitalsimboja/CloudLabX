@@ -2,6 +2,65 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { link } from "fs";
+
+export const labs = [
+  {
+    link: "aws",
+    text: "AWS Labs"
+  },
+  {
+    link: "openstack",
+    text: "OpenStack Labs"
+  },
+]
+
+export const solutions = [
+  {
+    link: "iot",
+    text: "IoT Edge"
+  },
+  {
+    link: "AI-ML",
+    text: "AI/ML"
+  },
+  {
+    link: "data",
+    text: "Data Engineering"
+  },
+  {
+    link: "devops",
+    text: "DevOps"
+  },
+  {
+    link: "security",
+    text: "Security"
+  }
+  
+]
+
+export const anciliary = [
+  {
+    link: "auto-segmentation",
+    text: "Data Segmentation"
+  },
+  {
+    link: "document-processing",
+    text: "Document Classification"
+  },
+  {
+    link: "workflow",
+    text: "Workflow Orchestration"
+  },
+  {
+    link: "social-media-chatbot",
+    text: "Social Media Chatbot"
+  },
+  {
+    link: "trainings",
+    text: "Trainings"
+  },
+]
 
 export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +74,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           <div className="flex items-center">
             <Link href="/">
               <span className="text-2xl font-bold text-accent cursor-pointer">
-                TrixNet
+                BojaLabs
               </span>
             </Link>
           </div>
@@ -35,18 +94,11 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <ChevronDown size={16} />
               </div>
               <div className="absolute hidden group-hover:block hover:block bg-[#1e293b] rounded-md p-2 shadow-lg min-w-max">
-                <Link
-                  href="/solutions/aws-labs"
-                  className="block px-4 py-2 hover:bg-[#334155] rounded"
-                >
-                  AWS Labs
-                </Link>
-                <Link
-                  href="/solutions/openstack-labs"
-                  className="block px-4 py-2 hover:bg-[#334155] rounded"
-                >
-                  OpenStack Labs
-                </Link>
+                {labs.map((l, i) => (
+                  <Link key={i} href={`/labs/${l.link}`} className="block px-4 py-2 hover:bg-[#334155] rounded">
+                    {l.text}
+                  </Link>
+                ))}
               </div>
             </div>
             {/* Solutions Dropdown */}
@@ -56,42 +108,29 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <ChevronDown size={16} />
               </div>
               <div className="absolute hidden group-hover:block bg-[#1e293b] rounded-md p-2 pl-4 shadow-lg min-w-max">
-                <Link
-                  href="/solutions/auto-segmentation"
-                  className="block hover:text-accent py-2"
-                >
-                  IoT Edge
-                </Link>
-                <Link
-                  href="/solutions/auto-segmentation"
-                  className="block hover:text-accent py-2"
-                >
-                  Data Segmentation
-                </Link>
-                <Link
-                  href="/solutions/optimization"
-                  className="block hover:text-accent py-2"
-                >
-                  Workflow Orchestration
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Telco Cloud
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Infrastructure Orchestration
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Trainings
-                </Link>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 max-w-xl">
+                  <div>
+                    <h3 className="border-b border-accent pb-1 border-gray-700">CORE</h3>
+
+                  {
+                    solutions.map((s, i) => (
+                      <Link key={i} href={`solutions/${s.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
+                        {s.text}
+                      </Link>
+                    ))
+                  }
+                  </div>
+                  <div>
+                  <h3 className="border-b border-accent pb-1 border-gray-700">ANCILIARY</h3>
+                    {
+                      anciliary.map((a, i) => (
+                        <Link key={i} href={`solutions/${a.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
+                          {a.text}
+                        </Link>
+                      ))
+                    }
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -147,42 +186,13 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
             </button>
             {mobileDropdown === "solutions" && (
               <div className="pl-4 space-y-2">
-                <Link
-                  href="/solutions/auto-segmentation"
-                  className="block hover:text-accent py-2"
-                >
-                  IoT Edge
-                </Link>
-                <Link
-                  href="/solutions/auto-segmentation"
-                  className="block hover:text-accent py-2"
-                >
-                  Data Segmentation
-                </Link>
-                <Link
-                  href="/solutions/optimization"
-                  className="block hover:text-accent py-2"
-                >
-                   Workflow Orchestration
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Telco Cloud
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Infrastructure Orchestration
-                </Link>
-                <Link
-                  href="/solutions/monitoring"
-                  className="block hover:text-accent py-2"
-                >
-                  Trainings
-                </Link>
+                {
+                  solutions.map((s, i) => (
+                    <Link key={i} href={`solutions/${s.link}`} className="block hover:text-accent py-2">
+                      {s.text}
+                    </Link>
+                  ))
+                }
               </div>
             )}
           </div>

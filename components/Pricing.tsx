@@ -67,7 +67,7 @@ export default function Pricing() {
         </h2>
         <p className="text-lg sm:text-xl text-dark-200 max-w-3xl mx-auto mb-12">
           Whether you're a small team automating hybrid workloads or an enterprise
-          optimizing cross-cloud networks, TrixNet has a plan tailored for your needs.
+          optimizing cross-cloud networks, BojaLabs has a plan tailored for your needs.
         </p>
 
         {/* Pricing Grid */}
