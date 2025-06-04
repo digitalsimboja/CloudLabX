@@ -18,7 +18,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2">
             <li className="flex items-center gap-2">
               <MapPin size={18} className="text-indigo-400" />
-              101 Bayside Walk, Sutton, Bayside, Dublin 13
+              Epworth House, 25 City Rd, Shoreditch, London EC1Y 1AA
             </li>
             <li className="flex items-center gap-2">
               <Mail size={18} className="text-indigo-400" />
@@ -26,7 +26,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Phone size={18} className="text-indigo-400" />
-              +353 1 234 5678
+              +234 806 3874 746
             </li>
           </ul>
         </div>

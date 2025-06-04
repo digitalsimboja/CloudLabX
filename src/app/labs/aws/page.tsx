@@ -56,10 +56,22 @@ const labs = [
     link: "/labs/aws/recommendation-engine",
   },
   {
-    "title": "Credit Scoring Model",
-    "description": "Leverage AWS services like Amazon SageMaker and DynamoDB to build and deploy a machine learning model for assessing credit scores based on historical data and financial behavior.",
-    "image": "/assets/labs/aws/credit-scoring.jpg",
-    "link": "/labs/aws/credit-scoring"
+    title: "Credit Scoring Model",
+    description: "Leverage AWS services like Amazon SageMaker and DynamoDB to build and deploy a machine learning model for assessing credit scores based on historical data and financial behavior.",
+    image: "/assets/labs/aws/credit-scoring.jpg",
+    link: "/labs/aws/credit-scoring"
+  },
+  {
+    title: "Product Reviews Collator",
+    description: "Explore and collate product reviews across social media channels.",
+    image: "/assets/labs/aws/product-reviews-collator.jpg",
+    link: "/labs/aws/product-reviews"
+  },
+  {
+    title: "WhatsApp Chatbot",
+    description: "Build a chatbot that can answer questions about WhatsApp messages.",
+    image: "/assets/labs/aws/whatsapp-chatbot.jpg",
+    link: "/labs/aws/whatsapp-chatbot"
   }
   
 ];
