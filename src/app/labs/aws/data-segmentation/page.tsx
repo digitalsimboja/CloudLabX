@@ -9,11 +9,13 @@ import { Upload, Download } from "lucide-react";
 export default function CustomerSegmentationLab() {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const [previewData, setPreviewData] = useState<any[]>([]);
   const [columns, setColumns] = useState<string[]>([]);
   const [segmentReady, setSegmentReady] = useState(false);
   const [segmentedData, setSegmentedData] = useState<any[]>([]);
   const [segmentedColumns, setSegmentedColumns] = useState<string[]>([]);
+  const [s3FilePath, setS3FilePath] = useState<string>("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -28,7 +30,7 @@ export default function CustomerSegmentationLab() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("/api/upload", {
+    const res = await fetch("/api/segmentation/upload", {
       method: "POST",
       body: formData,
     });
@@ -38,17 +40,28 @@ export default function CustomerSegmentationLab() {
     setColumns(data.columns);
     setSegmentReady(true);
     setUploading(false);
+    setS3FilePath(data.s3FilePath);
   };
 
   const handleSegmentation = async () => {
-    const res = await fetch("/api/segment", {
+    if (!s3FilePath) return;
+    setIsReady(true);
+  
+    const res = await fetch("/api/segmentation/segment", {
       method: "POST",
-      body: JSON.stringify({}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ s3FilePath }),
     });
-
+  
     const data = await res.json();
-    setSegmentedData(data.segmentedRows);
-    setSegmentedColumns(data.columns);
+  
+    if (data) {
+      setIsReady(false);
+      setSegmentedData(data.segmentedRows);
+      setSegmentedColumns(data.columns);
+    }
   };
 
   return (
@@ -192,7 +205,10 @@ export default function CustomerSegmentationLab() {
                       className="py-2 px-3 border-b border-r border-gray-700 last:border-r-0"
                     >
                       {columns.map((col, colIndex) => (
-                        <td key={colIndex} className="py-2 px-3">
+                        <td
+                          key={colIndex}
+                          className="py-2 px-3 border-b border-r border-gray-700 last:border-r-0"
+                        >
                           {row[col]}
                         </td>
                       ))}
@@ -207,7 +223,7 @@ export default function CustomerSegmentationLab() {
                 onClick={handleSegmentation}
                 className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition"
               >
-                Segment Data
+                {isReady ? "Running Segmentation..." : "Segment Data"}
               </button>
             </div>
           </section>
@@ -216,7 +232,7 @@ export default function CustomerSegmentationLab() {
         {segmentedData.length > 0 && (
           <section className="mt-12 max-w-6xl mx-auto">
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
-              Final Segmented Results
+              Segmented Results
             </h2>
             <div className="overflow-x-auto rounded-lg border border-gray-700">
               <table className="min-w-full text-sm text-gray-300">

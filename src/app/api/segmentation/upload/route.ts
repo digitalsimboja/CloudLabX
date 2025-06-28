@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 import { Readable } from "stream";
 import csvParser from "csv-parser";
 import * as XLSX from "xlsx";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { randomUUID } from "crypto";
+
+const s3 = new S3Client({
+  region: process.env.AWS_REGION!,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -30,7 +40,7 @@ export async function POST(req: Request) {
       rows = allRows.filter((row) =>
         Object.values(row).some((val) => String(val).trim() !== "")
       );
-    } else if (fileName.endsWith(".xlsx")) {
+    } else if (fileName.endsWith(".xlsx" || ".xls")) {
       const workbook = XLSX.read(buffer, { type: "buffer" });
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
@@ -64,12 +74,25 @@ export async function POST(req: Request) {
       );
     }
 
-    const previewRows = rows.slice(0, 10);
+    const previewRows = rows.slice(0, 5);
     const columns = Object.keys(previewRows[0] || {});
 
     // Implement the upload logic here to S3
+    const key = `uploads/${randomUUID()}-${file.name}`;
+    
+    const res = await s3.send(new PutObjectCommand({
+      Bucket: process.env.AWS_BUCKET_NAME!,
+      Key: key,
+      Body: buffer,
+      ContentType: file.type,
+    }));
 
-    return NextResponse.json({ previewRows, columns });
+    if (res.$metadata.httpStatusCode !== 200) {
+      throw new Error("Failed to upload file to S3");
+    }
+    const s3FilePath = `s3://${process.env.AWS_BUCKET_NAME}/${key}/${file.name}`;
+
+    return NextResponse.json({ previewRows, columns, s3FilePath });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(
