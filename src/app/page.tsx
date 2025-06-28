@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar isLoggedIn={false} />
       <HeroSection />
       <HowItWorks />
-      <Pricing />
+      {/* <Pricing /> */}
       <Features />
       <FAQ />
       <Testimonials />

@@ -102,7 +102,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
               </div>
             </div>
             {/* Solutions Dropdown */}
-            <div className="relative group">
+            {/* <div className="relative group">
               <div className="flex items-center space-x-1 cursor-pointer hover:text-accent">
                 <span>Solutions</span>
                 <ChevronDown size={16} />
@@ -114,7 +114,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
 
                   {
                     solutions.map((s, i) => (
-                      <Link key={i} href={`solutions/${s.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
+                      <Link key={i} href={`/${s.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
                         {s.text}
                       </Link>
                     ))
@@ -124,7 +124,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                   <h3 className="border-b border-accent pb-1 border-gray-700">ANCILIARY</h3>
                     {
                       anciliary.map((a, i) => (
-                        <Link key={i} href={`solutions/${a.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
+                        <Link key={i} href={`/${a.link}`} className="block hover:text-accent hover:border-b-2 hover:border-accent py-1">
                           {a.text}
                         </Link>
                       ))
@@ -132,11 +132,11 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <Link href="/pricing" className="hover:text-accent">
+            {/* <Link href="/pricing" className="hover:text-accent">
               Pricing
-            </Link>
+            </Link> */}
             <Link href="/contact" className="hover:text-accent">
               Contact
             </Link>
@@ -172,7 +172,7 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
           )}
 
           {/* Mobile Solutions Dropdown */}
-          <div className="space-y-1">
+          {/* <div className="space-y-1">
             <button
               className="flex items-center space-x-1 text-left w-full hover:text-accent"
               onClick={() =>
@@ -188,14 +188,14 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
               <div className="pl-4 space-y-2">
                 {
                   solutions.map((s, i) => (
-                    <Link key={i} href={`solutions/${s.link}`} className="block hover:text-accent py-2">
+                    <Link key={i} href={`/${s.link}`} className="block hover:text-accent py-2">
                       {s.text}
                     </Link>
                   ))
                 }
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* Mobile Labs Dropdown */}
           <div className="space-y-1">

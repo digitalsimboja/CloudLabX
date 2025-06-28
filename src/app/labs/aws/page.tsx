@@ -8,10 +8,10 @@ import Footer from "../../../../components/Footer";
 
 const labs = [
   {
-    title: "AI-Powered Customer Segmentation",
+    title: "AI-Powered Data Segmentation",
     description: "Use AWS Lambda, S3, and SageMaker to build real-time customer segmentation.",
-    image: "/assets/labs/customer-segmentation.png",
-    link: "/labs/aws/customer-segmentation",
+    image: "/assets/labs/aws/data-segmentation.jpg",
+    link: "/labs/aws/data-segmentation",
   },
   {
     title: "Serverless Video Processing",
@@ -87,7 +87,7 @@ export default function AWSLabsPage() {
       <section className="min-h-screen bg-dark-900 text-gray-200 px-4 py-10">
         {/* Hero Section */}
         <div className="max-w-5xl mx-auto text-center mb-16 mt-12">
-          <h1 className="text-4xl font-bold text-white mb-4">AWS Labs Showcase</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">AWS Labs Showroom</h1>
           <p className="text-gray-400 text-lg">
             Follow step-by-step labs built on AWS to learn how to implement production-ready cloud solutions.
           </p>

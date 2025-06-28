@@ -10,8 +10,8 @@ export default function HeroSection() {
           Intelligent Cloud Architecting & Network Automation
         </h1>
         <p className="text-light-200 text-lg mt-4">
-          AI-powered cloud automation for AWS, OpenStack,On-Prem and Hybrid
-          Cloud — all in one platform. Deploy smarter, scale faster, manage
+          AI-powered cloud automation for AWS, OpenStack, On-Prem and Hybrid
+          Cloud. Deploy smarter, scale faster & manage
           effortlessly.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">

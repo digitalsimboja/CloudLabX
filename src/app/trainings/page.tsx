@@ -1,10 +1,10 @@
 "use client";
 
 import React, { act, useState } from "react";
-import Navbar from "../../../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../../../../components/Footer";
+import Footer from "../../../components/Footer";
 
 const trainings = {
   python: [
@@ -12,7 +12,7 @@ const trainings = {
       title: "Python for Absolute Beginners",
       description: "Master the basics of Python including variables, loops, and functions.",
       image: "/assets/trainings/python-beginner.jpg",
-      link: "/solutions/trainings/python/beginner",
+      link: "/trainings/python/beginner",
     },
     {
       title: "Intermediate Python Projects",

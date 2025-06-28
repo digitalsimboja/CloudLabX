@@ -9,7 +9,7 @@ export default function HowItWorks() {
           How BojaLabs Works
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-          Streamline cloud orchestration with AI-powered automation.
+          SandyBox for cloud orchestration with AI-powered automation.
         </p>
 
         {/* Steps Grid */}
