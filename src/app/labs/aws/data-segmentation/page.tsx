@@ -60,10 +60,8 @@ export default function CustomerSegmentationLab() {
             AI-Powered Data Segmentation
           </h1>
           <p className="text-gray-400 text-md md:text-lg mb-6">
-            This lab demonstrates how data-driven companies to segment any
-            type of data intelligently. Upload your raw CSV or Excel file, and
-            let our AI-powered engine generate smart segmentation using machine
-            learning and ETL pipelines.
+            This lab demonstrates how data-driven companies can intelligently
+            segment any type of data intelligently.
           </p>
 
           <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
@@ -85,15 +83,19 @@ export default function CustomerSegmentationLab() {
                 Glue script for data segmentation
               </li>
               <li>
-                Generated Glue script is stored in S3 is executed which triggers
-                another Glue job to segment the data
+                Generated Glue script is stored in S3 which triggers another
+                Glue job to segment the data
               </li>
               <li>
                 Final segmented data is stored in S3 and can be queried using
                 Athena
               </li>
-              <li>You preview the first 10 rows of the segmented dataset</li>
-              <li>You can download or export the full segmented data set</li>
+              <li>
+                You can preview the first 10 rows of the segmented dataset
+              </li>
+              <li>
+                You can also download or export the full segmented data set
+              </li>
             </ul>
 
             <h2 className="text-xl font-semibold text-white mt-6 mb-3">
@@ -101,7 +103,8 @@ export default function CustomerSegmentationLab() {
             </h2>
             <ul className="list-disc pl-5 text-gray-300 space-y-2">
               <li>
-                <strong>Frontend:</strong> Next.js, TailwindCSS, Lucide Icons
+                <strong>Frontend:</strong> Next.js, TailwindCSS, Lucide Icons,
+                AWS SDK
               </li>
               <li>
                 <strong>Backend:</strong> AWS Lambda, Amazon S3, AWS Glue,
@@ -119,12 +122,35 @@ export default function CustomerSegmentationLab() {
           <label className="block text-left text-sm font-medium mb-2">
             Upload CSV/XLSX File
           </label>
-          <input
-            type="file"
-            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            className="file-input w-full"
-            onChange={handleFileChange}
-          />
+          <div className="w-full">
+            <label
+              htmlFor="file-upload"
+              className="flex flex-col items-center justify-center w-full px-4 py-6 border-2 border-dashed border-indigo-500 rounded-lg cursor-pointer bg-dark-800 hover:bg-dark-700 transition text-gray-300"
+            >
+              <Upload className="w-6 h-6 mb-2 text-indigo-400" />
+              <span className="font-semibold">Click to upload</span>
+              <span className="text-sm text-gray-400 mt-1">
+                CSV or XLSX (max 10MB)
+              </span>
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+
+            {file && (
+              <div className="mt-3 text-sm text-indigo-300 truncate">
+                <span className="text-white text-semibold">
+                  {" "}
+                  Selected File:
+                </span>{" "}
+                <span className="font-medium">{file.name}</span>
+              </div>
+            )}
+          </div>
 
           <button
             onClick={handleUpload}
@@ -161,7 +187,10 @@ export default function CustomerSegmentationLab() {
                 </thead>
                 <tbody>
                   {previewData.map((row, rowIndex) => (
-                    <tr key={rowIndex} className="even:bg-dark-800">
+                    <tr
+                      key={rowIndex}
+                      className="py-2 px-3 border-b border-r border-gray-700 last:border-r-0"
+                    >
                       {columns.map((col, colIndex) => (
                         <td key={colIndex} className="py-2 px-3">
                           {row[col]}
