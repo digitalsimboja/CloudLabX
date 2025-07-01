@@ -6,7 +6,7 @@ import Navbar from "../../../../../components/Navbar";
 import Footer from "../../../../../components/Footer";
 import { Upload, Download } from "lucide-react";
 
-export default function CustomerSegmentationLab() {
+export default function DataSegmentationLab() {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -16,6 +16,7 @@ export default function CustomerSegmentationLab() {
   const [segmentedData, setSegmentedData] = useState<any[]>([]);
   const [segmentedColumns, setSegmentedColumns] = useState<string[]>([]);
   const [s3FilePath, setS3FilePath] = useState<string>("");
+  const [approach, setApproach] = useState<"manual" | "auto">("manual");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -46,7 +47,7 @@ export default function CustomerSegmentationLab() {
   const handleSegmentation = async () => {
     if (!s3FilePath) return;
     setIsReady(true);
-  
+
     const res = await fetch("/api/segmentation/segment", {
       method: "POST",
       headers: {
@@ -54,9 +55,9 @@ export default function CustomerSegmentationLab() {
       },
       body: JSON.stringify({ s3FilePath }),
     });
-  
+
     const data = await res.json();
-  
+
     if (data) {
       setIsReady(false);
       setSegmentedData(data.segmentedRows);
@@ -73,11 +74,46 @@ export default function CustomerSegmentationLab() {
             AI-Powered Data Segmentation
           </h1>
           <p className="text-gray-400 text-md md:text-lg mb-6">
-            This lab demonstrates how data-driven companies can intelligently
-            segment any type of data intelligently.
+            Choose your preferred orchestration approach to explore the data
+            segmentation process.
           </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div
+              onClick={() => setApproach("manual")}
+              className={`cursor-pointer p-6 rounded-xl border transition ${
+                approach === "manual"
+                  ? "border-indigo-500 bg-dark-700"
+                  : "border-gray-700 bg-dark-800"
+              }`}
+            >
+              <h3 className="text-lg font-semibold mb-2">
+                Manual Orchestration
+              </h3>
+              <p className="text-sm text-gray-400">
+                Upload data and manually invoke segmentation. Suitable for
+                user-guided workflows.
+              </p>
+            </div>
 
-          <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <div
+              onClick={() => setApproach("auto")}
+              className={`cursor-pointer p-6 rounded-xl border transition ${
+                approach === "auto"
+                  ? "border-green-500 bg-dark-700"
+                  : "border-gray-700 bg-dark-800"
+              }`}
+            >
+              <h3 className="text-lg font-semibold mb-2">
+                Event-Driven Orchestration
+              </h3>
+              <p className="text-sm text-gray-400">
+                Let S3 events trigger Glue jobs automatically when new files are
+                uploaded to S3. Suitable for automated workflows.
+              </p>
+            </div>
+          </div>
+
+          {/* <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
             <h2 className="text-xl font-semibold mb-3">
               🔧 How It Was Crafted
             </h2>
@@ -127,11 +163,46 @@ export default function CustomerSegmentationLab() {
                 <strong>Language:</strong> TypeScript & Python
               </li>
             </ul>
-          </div>
+          </div> */}
+
+          {approach === "manual" && (
+            <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
+              <h2 className="text-xl font-semibold mb-3">
+                Manual Orchestration Flows
+              </h2>
+              <ul className="list-disc pl-5 text-gray-300 space-y-2">
+                <li>Upload raw customer data (.csv or .xlsx)</li>
+                <li>Store data in S3 and call Glue to sample schema</li>
+                <li>
+                  Call Bedrock via Lambda to generate category suggestions
+                </li>
+                <li>Render suggestions to user and store Glue script to S3</li>
+                <li>Upon user confirmation, trigger categorization Glue job</li>
+              </ul>
+            </div>
+          )}
+
+          {approach === "auto" && (
+            <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
+              <h2 className="text-xl font-semibold mb-3">
+                Event-Driven Flow
+              </h2>
+              <ul className="list-disc pl-5 text-gray-300 space-y-2">
+                <li>
+                  Upload data to a special S3 prefix (e.g. <code>uploads/</code>
+                  )
+                </li>
+                <li>S3 triggers Lambda function</li>
+                <li>Lambda starts Glue Job A to sample and invoke Bedrock</li>
+                <li>Generated categories + scripts are stored in S3</li>
+                <li>User accepts categories, which triggers final Glue job</li>
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Upload Interface */}
-        <div className="max-w-3xl mx-auto bg-dark-800 p-6 rounded-xl border border-gray-700 mt-12">
+        <div className="max-w-5xl mx-auto bg-dark-800 p-6 rounded-xl border border-gray-700 mt-12">
           <label className="block text-left text-sm font-medium mb-2">
             Upload CSV/XLSX File
           </label>
