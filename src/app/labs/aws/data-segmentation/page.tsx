@@ -184,9 +184,7 @@ export default function DataSegmentationLab() {
 
           {approach === "auto" && (
             <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h2 className="text-xl font-semibold mb-3">
-                Event-Driven Flow
-              </h2>
+              <h2 className="text-xl font-semibold mb-3">Event-Driven Flow</h2>
               <ul className="list-disc pl-5 text-gray-300 space-y-2">
                 <li>
                   Upload data to a special S3 prefix (e.g. <code>uploads/</code>
@@ -200,6 +198,14 @@ export default function DataSegmentationLab() {
             </div>
           )}
         </div>
+
+        {approach === "auto" && segmentReady && (
+          <div className="text-right mt-6">
+            <button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition">
+              Running Segmentation...
+            </button>
+          </div>
+        )}
 
         {/* Upload Interface */}
         <div className="max-w-5xl mx-auto bg-dark-800 p-6 rounded-xl border border-gray-700 mt-12">
@@ -289,14 +295,16 @@ export default function DataSegmentationLab() {
               </table>
             </div>
 
-            <div className="text-right mt-6">
-              <button
-                onClick={handleSegmentation}
-                className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition"
-              >
-                {isReady ? "Running Segmentation..." : "Segment Data"}
-              </button>
-            </div>
+            {approach === "manual" && (
+              <div className="text-right mt-6">
+                <button
+                  onClick={handleSegmentation}
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition"
+                >
+                  {isReady ? "Running Segmentation..." : "Segment Data"}
+                </button>
+              </div>
+            )}
           </section>
         )}
 
