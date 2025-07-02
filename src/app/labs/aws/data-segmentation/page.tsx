@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../../../../components/Navbar";
 import Footer from "../../../../../components/Footer";
+import ErrorDisplay, { LambdaErrorDisplay, NetworkErrorDisplay } from "../../../../../components/ErrorDisplay";
 import { Upload, Download } from "lucide-react";
 
 export default function DataSegmentationLab() {
@@ -18,6 +19,11 @@ export default function DataSegmentationLab() {
   const [segmentedColumns, setSegmentedColumns] = useState<string[]>([]);
   const [s3FilePath, setS3FilePath] = useState<string>("");
   const [approach, setApproach] = useState<"manual" | "auto">("manual");
+  const [error, setError] = useState<{
+    message: string;
+    type: "lambda" | "network" | "validation" | "server" | "unknown";
+    details?: string;
+  } | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -28,43 +34,79 @@ export default function DataSegmentationLab() {
   const handleUpload = async () => {
     if (!file) return;
     setUploading(true);
+    setError(null);
 
-    const formData = new FormData();
-    formData.append("file", file);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
 
-    const res = await fetch("/api/segmentation/upload", {
-      method: "POST",
-      body: formData,
-    });
+      const res = await fetch("/api/segmentation/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await res.json();
-    setPreviewData(data.previewRows);
-    setColumns(data.columns);
-    setSegmentReady(true);
-    setUploading(false);
-    setS3FilePath(data.s3FilePath);
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Upload failed");
+      }
+
+      const data = await res.json();
+      setPreviewData(data.previewRows);
+      setColumns(data.columns);
+      setSegmentReady(true);
+      setS3FilePath(data.s3FilePath);
+    } catch (err) {
+      setError({
+        message: err instanceof Error ? err.message : "Upload failed",
+        type: "network",
+        details: "Please check your file and try again."
+      });
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleProcessing = async (endpoint: "segment" | "categorize") => {
     if (!s3FilePath) return;
     setIsReady(true);
+    setError(null);
 
     setEndpoint(endpoint);
 
-    const res = await fetch(`/api/segmentation/${endpoint}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ s3FilePath }),
-    });
+    try {
+      const res = await fetch(`/api/segmentation/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ s3FilePath }),
+      });
 
-    const data = await res.json();
+      if (!res.ok) {
+        const errorData = await res.json();
+        const errorType = errorData.error?.includes("Lambda") ? "lambda" : "server";
+        throw new Error(errorData.error || `${endpoint} failed`);
+      }
 
-    if (data) {
-      setIsReady(false);
+      const data = await res.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       setSegmentedData(data.segmentedRows);
       setSegmentedColumns(data.columns);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : `${endpoint} failed`;
+      setError({
+        message: errorMessage,
+        type: errorMessage.includes("Lambda") ? "lambda" : "server",
+        details: errorMessage.includes("Lambda") 
+          ? "The Lambda function may not exist or may have configuration issues. Please check your AWS credentials and function name."
+          : "Please try again or contact support if the problem persists."
+      });
+    } finally {
+      setIsReady(false);
     }
   };
 
@@ -210,6 +252,7 @@ export default function DataSegmentationLab() {
           </button>
         </div>
 
+
         {/* Data Preview */}
         {previewData.length > 0 && (
           <section className="mt-12 max-w-6xl mx-auto">
@@ -259,6 +302,26 @@ export default function DataSegmentationLab() {
               </div>
             )}
           </section>
+        )}
+
+         {/* Error Display */}
+         {error && (
+          <div className="max-w-5xl mx-auto mt-6">
+            <ErrorDisplay
+              error={error}
+              onRetry={() => {
+                setError(null);
+                if (endpoint === "categorize") {
+                  handleProcessing("categorize");
+                } else if (endpoint === "segment") {
+                  handleProcessing("segment");
+                } else {
+                  handleUpload();
+                }
+              }}
+              onDismiss={() => setError(null)}
+            />
+          </div>
         )}
 
         {/* Segmented Data */}
