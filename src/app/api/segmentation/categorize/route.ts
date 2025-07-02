@@ -5,7 +5,6 @@ const CHALICE_API_URL = process.env.API_URL || "http://localhost:8000";
 
 export async function POST(req: Request) {
     try {
-        console.log("Categorizing data...");
         // Receive the S3 file path from the request body
         const { s3FilePath } = await req.json();
         console.log("S3 File Path:", s3FilePath);
@@ -16,8 +15,6 @@ export async function POST(req: Request) {
                 { status: 400 }
             );
         }
-
-        console.log("Calling Chalice API:", `${CHALICE_API_URL}/categorize`);
 
         // Call the Chalice API
         const response = await fetch(`${CHALICE_API_URL}/categorize`, {
@@ -42,10 +39,12 @@ export async function POST(req: Request) {
         }
 
         const data = await response.json();
-        console.log("Categorization completed successfully");
+        console.log(`Categorization completed successfully: ${JSON.stringify(data)}`);
         
         // Return the data in the expected format
         return NextResponse.json({
+            jobRunId: data.jobRunId,
+            status: data.status,
             segmentedRows: data.segmentedRows || [],
             columns: data.columns || []
         });

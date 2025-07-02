@@ -24,6 +24,8 @@ export default function DataSegmentationLab() {
     type: "lambda" | "network" | "validation" | "server" | "unknown";
     details?: string;
   } | null>(null);
+  const [jobRunId, setJobRunId] = useState<string>("");
+  const [jobStatus, setJobStatus] = useState<string>("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -82,6 +84,7 @@ export default function DataSegmentationLab() {
         body: JSON.stringify({ s3FilePath }),
       });
 
+
       if (!res.ok) {
         const errorData = await res.json();
         const errorType = errorData.type || (errorData.error?.includes("Lambda") ? "lambda" : "server");
@@ -94,8 +97,18 @@ export default function DataSegmentationLab() {
         throw new Error(data.error);
       }
 
-      setSegmentedData(data.segmentedRows);
-      setSegmentedColumns(data.columns);
+      // Handle Glue job response
+      if (data.jobRunId) {
+        setJobRunId(data.jobRunId);
+        setJobStatus(data.status);
+
+        // Start polling for job status
+        pollJobStatus(data.jobRunId, endpoint);
+      } else {
+        // Direct response (for immediate results)
+        setSegmentedData(data.segmentedRows);
+        setSegmentedColumns(data.columns);
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : `${endpoint} failed`;
       setError({
@@ -108,6 +121,65 @@ export default function DataSegmentationLab() {
     } finally {
       setIsReady(false);
     }
+  };
+
+  const pollJobStatus = async (jobId: string, endpoint: string) => {
+    const maxAttempts = 30; // 5 minutes with 10-second intervals
+    let attempts = 0;
+
+    const poll = async () => {
+      try {
+        const res = await fetch(`/api/segmentation/job-status/${jobId}`);
+        
+        if (!res.ok) {
+          throw new Error("Failed to check job status");
+        }
+
+        const data = await res.json();
+        setJobStatus(data.status);
+
+        if (data.status === "SUCCEEDED") {
+          setSegmentedData(data.segmentedRows);
+          setSegmentedColumns(data.columns);
+          setJobRunId("");
+          setJobStatus("");
+          return;
+        } else if (data.status === "FAILED" || data.status === "STOPPED" || data.status === "TIMEOUT") {
+          setError({
+            message: `Job ${data.status.toLowerCase()}`,
+            type: "server",
+            details: data.details || "Job execution failed"
+          });
+          setJobRunId("");
+          setJobStatus("");
+          return;
+        }
+
+        // Continue polling
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(poll, 10000); // Poll every 10 seconds
+        } else {
+          setError({
+            message: "Job timeout",
+            type: "server",
+            details: "Job took too long to complete"
+          });
+          setJobRunId("");
+          setJobStatus("");
+        }
+      } catch (err) {
+        setError({
+          message: "Failed to check job status",
+          type: "network",
+          details: "Unable to check job progress"
+        });
+        setJobRunId("");
+        setJobStatus("");
+      }
+    };
+
+    poll();
   };
 
   return (
@@ -321,6 +393,30 @@ export default function DataSegmentationLab() {
               }}
               onDismiss={() => setError(null)}
             />
+          </div>
+        )}
+
+        {/* Job Status Display */}
+        {jobRunId && jobStatus && (
+          <div className="max-w-5xl mx-auto mt-6">
+            <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+              <div className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-400"></div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-sm font-medium text-blue-200">
+                    {endpoint === "categorize" ? "Categorizing Data" : "Segmenting Data"}
+                  </h3>
+                  <p className="text-sm text-blue-300 mt-1">
+                    Job Status: {jobStatus} | ID: {jobRunId.substring(0, 20)}...
+                  </p>
+                  <p className="text-xs text-blue-400 mt-1">
+                    This may take a few minutes. We'll automatically update when complete.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
