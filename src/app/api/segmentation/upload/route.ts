@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       rows = allRows.filter((row) =>
         Object.values(row).some((val) => String(val).trim() !== "")
       );
-    } else if (fileName.endsWith(".xlsx" || ".xls")) {
+    } else if (fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) {
       const workbook = XLSX.read(buffer, { type: "buffer" });
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     const columns = Object.keys(previewRows[0] || {});
 
     // Implement the upload logic here to S3
-    const key = `uploads/${randomUUID()}-${file.name}`;
+    const key = `uploads/raw-data/${randomUUID()}-${file.name}`;
     
     const res = await s3.send(new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME!,

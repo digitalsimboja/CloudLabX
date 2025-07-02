@@ -44,11 +44,11 @@ export default function DataSegmentationLab() {
     setS3FilePath(data.s3FilePath);
   };
 
-  const handleSegmentation = async () => {
+  const handleProcessing = async (endpoint: "segment" | "categorize") => {
     if (!s3FilePath) return;
     setIsReady(true);
 
-    const res = await fetch("/api/segmentation/segment", {
+    const res = await fetch(`/api/segmentation/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export default function DataSegmentationLab() {
                 Manual Orchestration
               </h3>
               <p className="text-sm text-gray-400">
-                Upload data and manually invoke segmentation. Suitable for
+                Upload data and manually invoke data categorization and segmentation. Suitable for
                 user-guided workflows.
               </p>
             </div>
@@ -113,57 +113,6 @@ export default function DataSegmentationLab() {
             </div>
           </div>
 
-          {/* <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h2 className="text-xl font-semibold mb-3">
-              🔧 How It Was Crafted
-            </h2>
-            <ul className="list-disc pl-5 text-gray-300 space-y-2">
-              <li>Upload raw customer data (.csv or .xlsx)</li>
-              <li>
-                Data is stored securely in S3 and passed to AWS Glue for schema
-                inference
-              </li>
-              <li>
-                A Lambda function invokes Amazon Bedrock to suggest segmentation
-                categories
-              </li>
-              <li>
-                Segmented categories are used to prompt Bedrock to generate a
-                Glue script for data segmentation
-              </li>
-              <li>
-                Generated Glue script is stored in S3 which triggers another
-                Glue job to segment the data
-              </li>
-              <li>
-                Final segmented data is stored in S3 and can be queried using
-                Athena
-              </li>
-              <li>
-                You can preview the first 10 rows of the segmented dataset
-              </li>
-              <li>
-                You can also download or export the full segmented data set
-              </li>
-            </ul>
-
-            <h2 className="text-xl font-semibold text-white mt-6 mb-3">
-              🚀 Tech Stack
-            </h2>
-            <ul className="list-disc pl-5 text-gray-300 space-y-2">
-              <li>
-                <strong>Frontend:</strong> Next.js, TailwindCSS, Lucide Icons,
-                AWS SDK
-              </li>
-              <li>
-                <strong>Backend:</strong> AWS Lambda, Amazon S3, AWS Glue,
-                Amazon Bedrock
-              </li>
-              <li>
-                <strong>Language:</strong> TypeScript & Python
-              </li>
-            </ul>
-          </div> */}
 
           {approach === "manual" && (
             <div className="text-left bg-gray-800 p-6 rounded-xl border border-gray-700">
@@ -172,12 +121,12 @@ export default function DataSegmentationLab() {
               </h2>
               <ul className="list-disc pl-5 text-gray-300 space-y-2">
                 <li>Upload raw customer data (.csv or .xlsx)</li>
-                <li>Store data in S3 and call Glue to sample schema</li>
+                <li>Store data in S3 and user calls categorize which runs a Glue job to sample schema</li>
                 <li>
-                  Call Bedrock via Lambda to generate category suggestions
+                  Glue calls Bedrock via Lambda to generate category suggestions and Glue script
                 </li>
                 <li>Render suggestions to user and store Glue script to S3</li>
-                <li>Upon user confirmation, trigger categorization Glue job</li>
+                <li>Upon user confirmation, trigger segmenation Glue job</li>
               </ul>
             </div>
           )}
@@ -187,13 +136,13 @@ export default function DataSegmentationLab() {
               <h2 className="text-xl font-semibold mb-3">Event-Driven Flow</h2>
               <ul className="list-disc pl-5 text-gray-300 space-y-2">
                 <li>
-                  Upload data to a special S3 prefix (e.g. <code>uploads/</code>
+                  Upload data to a special S3 bucket (e.g. <code>uploads/</code>
                   )
                 </li>
                 <li>S3 triggers Lambda function</li>
                 <li>Lambda starts Glue Job A to sample and invoke Bedrock</li>
                 <li>Generated categories + scripts are stored in S3</li>
-                <li>User accepts categories, which triggers final Glue job</li>
+                <li>User accepts categories, which triggers final Glue job to segment data</li>
               </ul>
             </div>
           )}
@@ -258,6 +207,7 @@ export default function DataSegmentationLab() {
           </button>
         </div>
 
+        {/* Data Preview */}
         {segmentReady && (
           <section className="mt-12 max-w-6xl mx-auto">
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
@@ -298,16 +248,17 @@ export default function DataSegmentationLab() {
             {approach === "manual" && (
               <div className="text-right mt-6">
                 <button
-                  onClick={handleSegmentation}
+                  onClick={() => handleProcessing("categorize")}
                   className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition"
                 >
-                  {isReady ? "Running Segmentation..." : "Segment Data"}
+                  {isReady ? "Running Categorization..." : "Categorize Data"}
                 </button>
               </div>
             )}
           </section>
         )}
 
+        {/* Segmented Data */}
         {segmentedData.length > 0 && (
           <section className="mt-12 max-w-6xl mx-auto">
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
