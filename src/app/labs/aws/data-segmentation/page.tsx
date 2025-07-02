@@ -14,6 +14,7 @@ export default function DataSegmentationLab() {
   const [columns, setColumns] = useState<string[]>([]);
   const [segmentReady, setSegmentReady] = useState(false);
   const [segmentedData, setSegmentedData] = useState<any[]>([]);
+  const [endpoint, setEndpoint] = useState<"segment" | "categorize">("categorize");
   const [segmentedColumns, setSegmentedColumns] = useState<string[]>([]);
   const [s3FilePath, setS3FilePath] = useState<string>("");
   const [approach, setApproach] = useState<"manual" | "auto">("manual");
@@ -47,6 +48,8 @@ export default function DataSegmentationLab() {
   const handleProcessing = async (endpoint: "segment" | "categorize") => {
     if (!s3FilePath) return;
     setIsReady(true);
+
+    setEndpoint(endpoint);
 
     const res = await fetch(`/api/segmentation/${endpoint}`, {
       method: "POST",
@@ -208,7 +211,7 @@ export default function DataSegmentationLab() {
         </div>
 
         {/* Data Preview */}
-        {segmentReady && (
+        {previewData.length > 0 && (
           <section className="mt-12 max-w-6xl mx-auto">
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
               Data Preview
@@ -262,7 +265,7 @@ export default function DataSegmentationLab() {
         {segmentedData.length > 0 && (
           <section className="mt-12 max-w-6xl mx-auto">
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
-              Segmented Results
+              {endpoint === "segment" ? "Segmented Results" : "Categorized Results"}
             </h2>
             <div className="overflow-x-auto rounded-lg border border-gray-700">
               <table className="min-w-full text-sm text-gray-300">
@@ -290,13 +293,22 @@ export default function DataSegmentationLab() {
             </div>
 
             <div className="text-right mt-6">
-              <button
-                onClick={() => window.open("/api/export", "_blank")}
-                className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center gap-2"
-              >
-                <Download className="w-5 h-5" />
-                Download (.csv)
-              </button>
+              {endpoint === "categorize" ? (
+                <button
+                  onClick={() => handleProcessing("segment")}
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition"
+                >
+                  {isReady ? "Running Segmentation..." : "Segment Data"}
+                </button>
+              ) : (
+                <button
+                  onClick={() => window.open("/api/export", "_blank")}
+                  className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-medium transition flex items-center justify-center gap-2"
+                >
+                  <Download className="w-5 h-5" />
+                  Download (.csv)
+                </button>
+              )}
             </div>
           </section>
         )}

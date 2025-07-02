@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+    console.log("Segmenting data...");
     // Receive the S3 file path from the request body
     const { s3FilePath } = await req.json();
     console.log("S3 File Path:", s3FilePath);
