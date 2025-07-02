@@ -398,7 +398,7 @@ export default function DataSegmentationLab() {
 
         {/* Job Status Display */}
         {jobRunId && jobStatus && (
-          <div className="max-w-5xl mx-auto mt-6">
+          <div className="max-w-6xl mx-auto mt-6">
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
               <div className="flex items-center space-x-3">
                 <div className="flex-shrink-0">

@@ -90,7 +90,7 @@ export async function POST(req: Request) {
     if (res.$metadata.httpStatusCode !== 200) {
       throw new Error("Failed to upload file to S3");
     }
-    const s3FilePath = `s3://${process.env.AWS_BUCKET_NAME}/${key}/${file.name}`;
+    const s3FilePath = `s3://${process.env.AWS_BUCKET_NAME}/${key}`;
 
     return NextResponse.json({ previewRows, columns, s3FilePath });
   } catch (error) {

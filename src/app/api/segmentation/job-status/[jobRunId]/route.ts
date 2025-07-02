@@ -5,10 +5,10 @@ const CHALICE_API_URL = process.env.API_URL || "http://localhost:8000";
 
 export async function GET(
   req: Request,
-  { params }: { params: { jobRunId: string } }
+  { params }: { params: Promise<{ jobRunId: string }> }
 ) {
   try {
-    const { jobRunId } = params;
+    const { jobRunId } = await params;
     
     console.log(`Checking job status for: ${jobRunId}`);
 
