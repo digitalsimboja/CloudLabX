@@ -23,7 +23,21 @@ BojaLabs is a cloud architecting and hands-on lab platform that allows teams to 
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+1. **Chalice API Setup**: Deploy the Chalice API first (see `data-segmentation-api/README.md`)
+2. **Environment Configuration**: Create a `.env.local` file with your Chalice API URL:
+
+```bash
+# Chalice API Configuration
+NEXT_PUBLIC_CHALICE_API_URL=https://your-chalice-api-url.execute-api.eu-west-1.amazonaws.com/api
+```
+
+Replace the URL with your actual Chalice API Gateway URL after deployment.
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev

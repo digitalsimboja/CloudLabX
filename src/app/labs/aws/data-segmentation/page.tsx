@@ -84,7 +84,7 @@ export default function DataSegmentationLab() {
 
       if (!res.ok) {
         const errorData = await res.json();
-        const errorType = errorData.error?.includes("Lambda") ? "lambda" : "server";
+        const errorType = errorData.type || (errorData.error?.includes("Lambda") ? "lambda" : "server");
         throw new Error(errorData.error || `${endpoint} failed`);
       }
 

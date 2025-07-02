@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
-import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 
-const lambda = new LambdaClient({
-    region: process.env.AWS_REGION || "eu-west-1",
-    credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-    },
-});
+// Chalice API configuration
+const CHALICE_API_URL = process.env.API_URL || "http://localhost:8000";
 
 export async function POST(req: Request) {
     try {
@@ -23,65 +17,46 @@ export async function POST(req: Request) {
             );
         }
 
-        // Get Lambda function name from environment variable
-        const lambdaFunctionName = process.env.CATEGORIZATION_LAMBDA_FUNCTION_NAME;
-        
-        if (!lambdaFunctionName) {
-            console.error("CATEGORIZATION_LAMBDA_FUNCTION_NAME environment variable is not set");
-            return NextResponse.json(
-                { error: "Lambda function configuration error" },
-                { status: 500 }
-            );
-        }
+        console.log("Calling Chalice API:", `${CHALICE_API_URL}/categorize`);
 
-        console.log("Invoking Lambda function:", lambdaFunctionName);
-
-        // Prepare payload for Lambda function
-        const payload = {
-            s3FilePath: s3FilePath,
-            operation: "categorize"
-        };
-
-        // Invoke Lambda function
-        const command = new InvokeCommand({
-            FunctionName: lambdaFunctionName,
-            Payload: JSON.stringify(payload),
-            InvocationType: "RequestResponse",
+        // Call the Chalice API
+        const response = await fetch(`${CHALICE_API_URL}/categorize`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ s3FilePath }),
         });
 
-        const response = await lambda.send(command);
-        
-        if (response.StatusCode !== 200) {
-            console.error("Lambda invocation failed with status:", response.StatusCode);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Chalice API error:", errorData);
             return NextResponse.json(
-                { error: "Lambda function invocation failed" },
-                { status: 500 }
+                { 
+                    error: errorData.error || "Chalice API call failed",
+                    details: errorData.details,
+                    type: errorData.type || "server"
+                },
+                { status: response.status }
             );
         }
 
-        // Parse the response payload
-        const responsePayload = JSON.parse(new TextDecoder().decode(response.Payload));
-        
-        if (responsePayload.errorMessage) {
-            console.error("Lambda function error:", responsePayload.errorMessage);
-            return NextResponse.json(
-                { error: "Lambda function execution failed", details: responsePayload.errorMessage },
-                { status: 500 }
-            );
-        }
-
+        const data = await response.json();
         console.log("Categorization completed successfully");
         
-        // Return the categorized data in the expected format
+        // Return the data in the expected format
         return NextResponse.json({
-            segmentedRows: responsePayload.categorizedRows || responsePayload.data || [],
-            columns: responsePayload.columns || []
+            segmentedRows: data.segmentedRows || [],
+            columns: data.columns || []
         });
 
     } catch (error) {
         console.error("Error during categorization:", error);
         return NextResponse.json(
-            { error: "Internal server error during categorization" },
+            { 
+                error: "Internal server error during categorization",
+                type: "server"
+            },
             { status: 500 }
         );
     }
