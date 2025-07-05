@@ -139,6 +139,7 @@ export default function DataSegmentationLab() {
         setJobStatus(data.status);
 
         if (data.status === "SUCCEEDED") {
+          console.log("Segmented data:", data);
           setSegmentedData(data.segmentedRows);
           setSegmentedColumns(data.columns);
           setJobRunId("");
@@ -426,6 +427,11 @@ export default function DataSegmentationLab() {
             <h2 className="text-xl md:text-2xl font-semibold mb-4">
               {endpoint === "segment" ? "Segmented Results" : "Categorized Results"}
             </h2>
+            <p className="text-sm text-gray-400 mb-4">
+              {endpoint === "segment" ? 
+              "Segmented data based on the criteria provided by the user." : 
+              "Your data will be categorized into the following categories: " + segmentedColumns.join(", ")}
+            </p>
             <div className="overflow-x-auto rounded-lg border border-gray-700">
               <table className="min-w-full text-sm text-gray-300">
                 <thead className="bg-dark-700">

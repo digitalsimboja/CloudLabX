@@ -41,7 +41,7 @@ export async function GET(
       jobRunId: data.jobRunId,
       status: data.status,
       message: data.message,
-      segmentedRows: data.segmentedRows || [],
+      segmentedRows: data.suggestedCategories ? data.suggestedCategories : data.segmentedRows || [],
       columns: data.columns || []
     });
 
