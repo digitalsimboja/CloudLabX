@@ -8,6 +8,12 @@ import Footer from "../../../../components/Footer";
 
 const ciscoDevnetLabs = [
   {
+    title: "IP Subnet Calculator and CIDR Calculator",
+    description: "Calculate IP addresses, subnets, and more with our interactive IP calculator.",
+    image: "/images/ip-simulation-calculator.jpg",
+    link: "/labs/cisco-devnet/ip-simulation-calculator"
+  },
+  {
     title: "Cisco DevNet Fundamentals",
     description: "Learn the basics of Cisco DevNet and network automation fundamentals.",
     image: "/images/cisco-devnet-fundamentals.jpg",
