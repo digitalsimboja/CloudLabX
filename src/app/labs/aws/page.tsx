@@ -72,6 +72,12 @@ const labs = [
     description: "Build a chatbot that can answer questions about WhatsApp messages.",
     image: "/assets/labs/aws/whatsapp-chatbot.jpg",
     link: "/labs/aws/whatsapp-chatbot"
+  },
+  {
+    title: "Network Automation Diagramming Tool",
+    description: "Create network diagrams and visualize network data using AWS CloudFormation and Router configuration document.",
+    image: "/assets/labs/aws/network-automation-diagramming.jpg",
+    link: "/labs/aws/network-automation-diagramming"
   }
   
 ];

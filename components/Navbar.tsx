@@ -13,6 +13,10 @@ export const labs = [
     link: "openstack",
     text: "OpenStack Labs"
   },
+  {
+    link: "cisco-devnet",
+    text: "Cisco DevNet"
+  },
 ]
 
 export const solutions = [

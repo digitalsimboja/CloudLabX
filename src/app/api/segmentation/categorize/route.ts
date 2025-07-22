@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 // Chalice API configuration
-const CHALICE_API_URL = process.env.API_URL || "http://localhost:8000";
+const CHALICE_API_URL = process.env.NEXT_PUBLIC_CHALICE_API_URL || "http://localhost:8000";
 
 export async function POST(req: Request) {
     try {

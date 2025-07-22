@@ -123,13 +123,13 @@ export default function DataSegmentationLab() {
     }
   };
 
-  const pollJobStatus = async (jobId: string, endpoint: string) => {
+  const pollJobStatus = async (jobId: string, endpoint: "segment" | "categorize") => {
     const maxAttempts = 30; // 5 minutes with 10-second intervals
     let attempts = 0;
 
     const poll = async () => {
       try {
-        const res = await fetch(`/api/segmentation/job-status/${jobId}`);
+        const res = await fetch(`/api/segmentation/job-status/${jobId}?type=${endpoint}`);
         
         if (!res.ok) {
           throw new Error("Failed to check job status");
